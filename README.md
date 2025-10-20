@@ -40,7 +40,7 @@ go build -o server.exe cmd/api/main.go
 启动服务器后，访问以下地址：
 
 - **🏠 主页**: http://localhost:8080
-- **📝 每日练习**: http://localhost:8080/exercises
+- **📝 每日练习**: http://localhost:8080/exercises ([练习计划详情](./exercises/README.md))
 - **🔧 基础模块**: http://localhost:8080/gobase
 - **💚 健康检查**: http://localhost:8080/health
 
@@ -126,8 +126,15 @@ go build -o server.exe cmd/api/main.go
 8. **高级特性** - 性能优化和设计模式
 
 ### 第三阶段：实践练习 (exercises目录)
-- **6周练习计划** - 每日一练，循序渐进
+- **6周练习计划** - 每日一练，循序渐进 📋 [详细练习计划](./exercises/README.md)
 - **项目实战** - 结合所学知识构建完整项目
+
+#### 📅 练习计划概览
+- **第1-2周**: Go语言基础入门和核心概念
+- **第3-4周**: HTTP和Web开发、数据库操作
+- **第5-6周**: 项目实战和部署优化
+
+> 💡 **提示**: 点击 [练习计划详情](./exercises/README.md) 查看完整的42天学习安排
 
 ---
 
@@ -146,10 +153,11 @@ go build -o server.exe cmd/api/main.go
 - 🛠️ **实用工具函数** - 可直接在项目中使用
 
 ### 练习系统
-- 📅 **6周学习计划** - 科学安排学习进度
+- 📅 **6周学习计划** - 科学安排学习进度 ([查看详细计划](./exercises/README.md))
 - 🎯 **循序渐进** - 从简单到复杂，逐步提升
 - 💻 **命令行运行** - 支持直接运行练习代码
 - 🌐 **Web端查看** - 在浏览器中查看源代码
+- 📋 **42天练习** - 每日一练，持续学习
 
 ---
 
