@@ -16,7 +16,7 @@ func serveSourceCode(filePath string) http.HandlerFunc {
 			http.Error(w, "文件不存在: "+filePath, http.StatusNotFound)
 			return
 		}
-		
+
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		fmt.Fprintf(w, `
 		<html>
@@ -61,7 +61,7 @@ func main() {
 			http.NotFound(w, r)
 			return
 		}
-		
+
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		fmt.Fprintf(w, `
 		<html>
@@ -182,39 +182,44 @@ func main() {
 					<a href="/gobase/01">查看源代码</a>
 				</div>
 				<div class="module-card">
-					<h3>02 - 函数</h3>
-					<p>函数定义、参数、返回值、闭包、defer</p>
+					<h3>02 - 切片与映射 CRUD</h3>
+					<p>切片/映射的创建、读取、更新、删除及清空技巧</p>
 					<a href="/gobase/02">查看源代码</a>
 				</div>
 				<div class="module-card">
-					<h3>03 - 结构体和接口</h3>
-					<p>结构体、方法、接口、类型断言</p>
+					<h3>03 - 函数</h3>
+					<p>函数定义、参数、返回值、闭包、defer</p>
 					<a href="/gobase/03">查看源代码</a>
 				</div>
 				<div class="module-card">
-					<h3>04 - 并发编程</h3>
-					<p>goroutine、channel、select、同步</p>
+					<h3>04 - 结构体和接口</h3>
+					<p>结构体、方法、接口、类型断言</p>
 					<a href="/gobase/04">查看源代码</a>
 				</div>
-				<div class="module-card http">
-					<h3>05 - HTTP基础</h3>
-					<p>HTTP服务器、处理器、中间件、客户端</p>
+				<div class="module-card">
+					<h3>05 - 并发编程</h3>
+					<p>goroutine、channel、select、同步</p>
 					<a href="/gobase/05">查看源代码</a>
 				</div>
 				<div class="module-card http">
-					<h3>06 - API开发</h3>
-					<p>RESTful API、CRUD操作、JSON处理、错误处理</p>
+					<h3>06 - HTTP基础</h3>
+					<p>HTTP服务器、处理器、中间件、客户端</p>
 					<a href="/gobase/06">查看源代码</a>
 				</div>
-				<div class="module-card database">
-					<h3>07 - 数据库操作</h3>
-					<p>SQL操作、连接池、事务、ORM基础</p>
+				<div class="module-card http">
+					<h3>07 - API开发</h3>
+					<p>RESTful API、CRUD操作、JSON处理、错误处理</p>
 					<a href="/gobase/07">查看源代码</a>
 				</div>
-				<div class="module-card advanced">
-					<h3>08 - 高级特性</h3>
-					<p>并发模式、反射、泛型、性能优化、设计模式</p>
+				<div class="module-card database">
+					<h3>08 - 数据库操作</h3>
+					<p>SQL操作、连接池、事务、ORM基础</p>
 					<a href="/gobase/08">查看源代码</a>
+				</div>
+				<div class="module-card advanced">
+					<h3>09 - 高级特性</h3>
+					<p>并发模式、反射、泛型、性能优化、设计模式</p>
+					<a href="/gobase/09">查看源代码</a>
 				</div>
 			</div>
 		</body>
@@ -228,19 +233,20 @@ func main() {
 
 	// Go基础模块源代码查看
 	http.HandleFunc("/gobase/01", serveSourceCode("gobase/01_variables_and_types.go"))
-	http.HandleFunc("/gobase/02", serveSourceCode("gobase/02_functions.go"))
-	http.HandleFunc("/gobase/03", serveSourceCode("gobase/03_structs_and_interfaces.go"))
-	http.HandleFunc("/gobase/04", serveSourceCode("gobase/04_concurrency.go"))
-	http.HandleFunc("/gobase/05", serveSourceCode("gobase/05_http_basics.go"))
-	http.HandleFunc("/gobase/06", serveSourceCode("gobase/06_api_development.go"))
-	http.HandleFunc("/gobase/07", serveSourceCode("gobase/07_database_basics.go"))
-	http.HandleFunc("/gobase/08", serveSourceCode("gobase/08_advanced_features.go"))
+	http.HandleFunc("/gobase/02", serveSourceCode("gobase/02_slices_maps.go"))
+	http.HandleFunc("/gobase/03", serveSourceCode("gobase/02_functions.go"))
+	http.HandleFunc("/gobase/04", serveSourceCode("gobase/03_structs_and_interfaces.go"))
+	http.HandleFunc("/gobase/05", serveSourceCode("gobase/04_concurrency.go"))
+	http.HandleFunc("/gobase/06", serveSourceCode("gobase/05_http_basics.go"))
+	http.HandleFunc("/gobase/07", serveSourceCode("gobase/06_api_development.go"))
+	http.HandleFunc("/gobase/08", serveSourceCode("gobase/07_database_basics.go"))
+	http.HandleFunc("/gobase/09", serveSourceCode("gobase/08_advanced_features.go"))
 
 	fmt.Println("🚀 Go Web API 学习服务器启动成功!")
 	fmt.Println("📱 访问地址: http://localhost:8080")
 	fmt.Println("📚 练习目录: http://localhost:8080/exercises")
 	fmt.Println("🔧 基础模块: http://localhost:8080/gobase")
 	fmt.Println("💚 健康检查: http://localhost:8080/health")
-	
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

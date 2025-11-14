@@ -1,42 +1,86 @@
-// Day 02 - 变量和类型练习
+// Day 02 - 变量与结构体 CRUD 练习
 // 日期: 2025年x月 (请根据实际日期修改)
-// 学习内容: 变量声明、基本类型、类型转换
+// 学习内容: 变量与结构体的 创建(增)、读取(查)、更新(改)、置空(“删”)
 
 package main
 
 import "fmt"
 
+// Person 用于结构体 CRUD 演示
+type Person struct {
+    Name string
+    Age  int
+    Job  string
+}
+
+func variableCRUD() {
+    fmt.Println("\n[变量 CRUD]")
+
+    // 增: 创建变量（声明 + 赋值）
+    var name string = "Go 学习者"
+    var age int = 25
+    isStudent := false // 短变量声明
+    fmt.Printf("创建 -> 姓名:%s 年龄:%d 学生:%v\n", name, age, isStudent)
+
+    // 查: 读取变量
+    fmt.Printf("读取 -> name=%q age=%d isStudent=%v\n", name, age, isStudent)
+
+    // 改: 更新变量（重新赋值）
+    name = "Gopher"
+    age += 1
+    isStudent = true
+    fmt.Printf("更新 -> 姓名:%s 年龄:%d 学生:%v\n", name, age, isStudent)
+
+    // “删”: 将变量置为零值/空值（Go 没有真正的删除变量语义）
+    name = ""     // 字符串零值
+    age = 0        // 数值零值
+    isStudent = false
+    fmt.Printf("置空 -> 姓名:%q 年龄:%d 学生:%v\n", name, age, isStudent)
+}
+
+func structCRUD() {
+    fmt.Println("\n[结构体 CRUD]")
+
+    // 增: 创建结构体实例
+    p := Person{Name: "Alice", Age: 30, Job: "Engineer"}
+    fmt.Printf("创建 -> %+v\n", p)
+
+    // 查: 读取字段
+    fmt.Printf("读取 -> Name=%s Age=%d Job=%s\n", p.Name, p.Age, p.Job)
+
+    // 改: 更新字段
+    p.Age++
+    p.Job = "Senior Engineer"
+    fmt.Printf("更新 -> %+v\n", p)
+
+    // “删”: 将结构体置为零值（或指针置为 nil）
+    p = Person{} // 所有字段置为零值
+    fmt.Printf("置空 -> %+v\n", p)
+
+    // 指针形式的“删”演示
+    pp := &Person{Name: "Bob", Age: 28, Job: "Designer"}
+    fmt.Printf("指针创建 -> %+v\n", *pp)
+    pp = nil
+    fmt.Printf("指针置空 -> %v\n", pp)
+}
+
+func numberTypes() {
+    fmt.Println("\n[数值类型与转换]")
+    var i8 int8 = 127
+    var f32 float32 = 3.1415927
+    var f64 float64 = 3.141592653589793
+    fmt.Printf("int8=%d f32=%.7f f64=%.15f\n", i8, f32, f64)
+
+    // 类型转换演示
+    i32 := int32(i8)
+    f := float64(i32)
+    fmt.Printf("转换 -> int32=%d float64=%.0f\n", i32, f)
+}
+
 func main() {
-	fmt.Println("=== Day 02: 变量和类型练习 ===")
+    fmt.Println("=== Day 02: 变量与结构体 CRUD 练习 ===")
 
-	// TODO: 在这里完成今天的练习
-	// 1. 声明不同类型的变量
-	var name string = "go 语言爱好者"
-	var age int = 25
-	var isStudnet bool = false
-	fmt.Printf("姓名：%s, 年龄：%d, 是否学生：%v\n", name, age, isStudnet)
-
-	//短变量声明（只能在函数内使用）
-	day := 2
-	year := 2025
-	version := "v1.0.0"
-	fmt.Printf("今天是第 %d 天练习，%d年, 版本号为:%s\n", day, year, version)
-
-	//基本数据类型
-	var int8Val int8 = 127
-
-	// 浮点类型
-	var float32Val float32 = 3.141592653589793
-	var float64Val float64 = 3.141592653589793
-
-	fmt.Printf("整数类型： %d\n", int8Val)
-	fmt.Printf("float32浮点类型： %f\n", float32Val)
-	fmt.Printf("float64浮点类型： %f\n", float64Val)
-
-	// 2. 练习类型转换
-	// 3. 使用常量
-	// 4. 数组和切片操作
-
-	fmt.Println("今天的练习: 变量和类型")
-	fmt.Println("请完成上面的TODO项目")
+    variableCRUD()
+    structCRUD()
+    numberTypes()
 }

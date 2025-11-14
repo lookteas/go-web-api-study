@@ -15,19 +15,33 @@ exercises/
 
 ## 🎯 使用方法
 
-### 1. 每日练习
+### 1. 学习顺序
+1. 先阅读并运行 `gobase/` 中的对应示例，理解知识点与 CRUD 操作
+2. 再对照示例，在 `exercises/dayXX/` 自行完成练习文件（可照抄、可改写、可扩展）
+3. 运行练习文件，观察输出，确保与示例一致
+
+### 2. 每日练习
 每天在对应的 `dayXX/` 目录下完成练习：
-- 创建 `.go` 文件
-- 编写练习代码
-- 运行测试
+- 创建 `.go` 文件（或复制示例后修改）
+- 编写练习代码，务必亲手实现 CRUD 各步
+- 运行测试，对比 gobase 输出
 
-### 2. 命令行运行
+### 3. 命令行运行
 ```bash
-# 运行第1天的练习
-go run exercises/day01/hello_world.go
+# 1. 先运行 gobase 示例，看懂输出
+go run gobase/01_variables_and_types.go  # 变量/结构体 CRUD
+go run gobase/02_slices_maps.go            # 切片与映射 CRUD
 
-# 运行第2天的练习
+# 2. 再运行自己的练习
+go run exercises/day01/hello_world.go
 go run exercises/day02/variables_practice.go
+go run exercises/day03/variables_practice.go  # 切片练习
+go run exercises/day04/variables_practice.go  # 映射练习
+```
+
+#### 运行第4天的练习（Map CRUD）
+```
+go run exercises/day04/variables_practice.go
 ```
 
 ### 3. Web端查看
@@ -46,9 +60,9 @@ go run exercises/day02/variables_practice.go
 
 ### 第一周：Go语言基础入门
 - **Day 01**: Hello World + 基础语法
-- **Day 02**: 变量声明和基本类型
-- **Day 03**: 变量进阶：类型转换和常量
-- **Day 04**: 函数定义和基本调用
+- **Day 02**: 变量与结构体 CRUD（创建/读取/更新/置空）
+- **Day 03**: 切片 CRUD（创建/读取/更新/删除/清空）
+- **Day 04**: Map CRUD（创建/读取/更新/删除/遍历/清空）
 - **Day 05**: 函数进阶：参数、返回值、闭包
 - **Day 06**: 结构体定义和基本使用
 - **Day 07**: 结构体进阶：方法和嵌套
@@ -104,3 +118,9 @@ go run exercises/day02/variables_practice.go
 - 在文件开头添加日期和学习内容注释
 - 遇到问题时，可以参考 `gobase/` 目录下的示例代码
 - 完成练习后，可以在Web界面查看和分享你的代码
+
+## ✅ 已覆盖的核心操作
+
+- 变量与结构体：创建、读取、更新、置空（零值与指针 nil）
+- 切片：创建、追加、读取、更新、删除（单元素与区间）、清空与置为 nil
+- Map：创建、读取（含 ok 习语）、更新、删除、遍历、清空（重建与逐个删除）

@@ -112,4 +112,73 @@ func main() {
 	fmt.Printf("age的类型: %s\n", reflect.TypeOf(age))
 	fmt.Printf("slice的类型: %s\n", reflect.TypeOf(slice))
 	fmt.Printf("languages的类型: %s\n", reflect.TypeOf(languages))
+
+	// 8. 变量/结构体 CRUD 示范
+	fmt.Println("\n8. 变量/结构体 CRUD 示范：")
+	variableCRUD()
+	structCRUD()
+	pointerCRUD()
+}
+
+// variableCRUD 演示基本变量的增查改删（置空）
+func variableCRUD() {
+	fmt.Println("\n--- 变量 CRUD ---")
+	// Create
+	var count int = 10
+	fmt.Println("Create: count =", count)
+
+	// Read
+	fmt.Println("Read: count =", count)
+
+	// Update
+	count = 20
+	fmt.Println("Update: count =", count)
+
+	// Delete（置零值）
+	count = 0
+	fmt.Println("Delete(零值): count =", count)
+}
+
+// Person 结构体示例
+type Person struct {
+	Name string
+	Age  int
+}
+
+// structCRUD 演示结构体的增查改删
+func structCRUD() {
+	fmt.Println("\n--- 结构体 CRUD ---")
+	// Create
+	p := Person{Name: "Alice", Age: 30}
+	fmt.Printf("Create: %+v\n", p)
+
+	// Read
+	fmt.Printf("Read: Name=%s, Age=%d\n", p.Name, p.Age)
+
+	// Update
+	p.Age = 31
+	fmt.Printf("Update: %+v\n", p)
+
+	// Delete（置零值）
+	p = Person{}
+	fmt.Printf("Delete(零值): %+v\n", p)
+}
+
+// pointerCRUD 演示指针变量的增查改删
+func pointerCRUD() {
+	fmt.Println("\n--- 指针 CRUD ---")
+	// Create
+	var p *Person = &Person{Name: "Bob", Age: 25}
+	fmt.Printf("Create: %+v\n", *p)
+
+	// Read
+	fmt.Printf("Read: Name=%s, Age=%d\n", p.Name, p.Age)
+
+	// Update
+	p.Age = 26
+	fmt.Printf("Update: %+v\n", *p)
+
+	// Delete（置 nil）
+	p = nil
+	fmt.Printf("Delete(nil): p=%v\n", p)
 }
